@@ -1,0 +1,31 @@
+#
+#  Completion for shell-extension-manager:
+#
+#  shell-extension-manager install
+#  shell-extension-manager remove
+#  shell-extension-manager update
+#  shell-extension-manager enable
+#  shell-extension-manager disable
+#  shell-extension-manager show
+#  shell-extension-manager create
+#
+_shell-extension-manager()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="install remove update enable disable show create"
+
+    if [ "$COMP_CWORD" -gt "1" ] && [ "${COMP_WORDS[1]}" = "create" ]; then
+        _filedir
+        return 0
+    fi
+
+    if [ "$COMP_CWORD" -gt "1" ]; then
+        return 0
+    fi
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+}
+complete -F _shell-extension-manager shell-extension-manager
