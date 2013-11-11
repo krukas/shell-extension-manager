@@ -2,7 +2,7 @@ from os import getenv
 from os.path import isfile
 from xml.dom import minidom
 from Config import Config
-from Utils import error
+from Utils import *
 from ExtensionInstaller import ExtensionInstaller
 
 class ExtensionManager:
@@ -57,9 +57,9 @@ class ExtensionManager:
 
 	def install(self, args):
 		if(Config.user == 'root'):
-			print "Installing extensions system wide"
+			display("Installing extensions system wide")
 		else:
-			print "Installing extensions for user "+Config.user
+			display("Installing extensions for user "+Config.user)
 		install = ExtensionInstaller()
 		install.install(args, Config.optYes)
 

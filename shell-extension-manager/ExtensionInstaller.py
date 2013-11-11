@@ -1,4 +1,5 @@
+from Utils import *
 class ExtensionInstaller:
 
 	def install(self, extensions, optYes):
-		print "Installing ..."
+		display("Installing ...")
