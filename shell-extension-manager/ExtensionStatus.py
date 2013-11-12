@@ -17,3 +17,7 @@ class ExtensionStatus:
 
 	def disableExtension(self, uuid):
 		print "disable"
+
+	def activeExtensions(self):
+		gsettings = Gio.Settings.new("org.gnome.shell")
+		return gsettings.get_value('enabled-extensions').unpack()

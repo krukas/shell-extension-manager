@@ -114,11 +114,10 @@ class ExtensionInstaller:
 	def getInstalledExtensions(self):
 		curInstalledExtensions = {}
 		for fn in listdir(Config.installDir):
-			if(Config.installDir+fn+"/metadata.json"):
-				json_data=open(Config.installDir+fn+"/metadata.json")
-				extension = load(json_data)
-				name = extension['name'].replace(' ', '-').lower() 
-				curInstalledExtensions[name] = extension
+			json_data=open(Config.installDir+fn+"/metadata.json")
+			extension = load(json_data)
+			name = extension['name'].replace(' ', '-').lower() 
+			curInstalledExtensions[name] = extension
 		return curInstalledExtensions
 
 	def getNewExtensionInfo(self, id):

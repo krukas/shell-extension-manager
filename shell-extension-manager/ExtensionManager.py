@@ -83,7 +83,8 @@ class ExtensionManager:
 		print "disable"
 
 	def show(self, args):
-		print "show"
+		show = ExtensionShow()
+		show.show(Config.optList, Config.optActive)
 
 	def create(self, args):
 		print "create"
