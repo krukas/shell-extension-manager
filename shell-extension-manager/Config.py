@@ -6,6 +6,6 @@ class Config:
 	installDir		= ""
 	optQuiet		= False
 	optYes			= False
-	optAll			= False
+	optActive		= False
 	optList			= False
 

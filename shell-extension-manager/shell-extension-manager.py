@@ -38,8 +38,8 @@ if(len(argv) > 2 ):
 			Config.optQuiet = True
 		elif(arg == "-y" or arg == "--yes"):
 			Config.optYes = True
-		elif(arg == "-a" or arg == "--all"):
-			Config.optAll = True
+		elif(arg == "-a" or arg == "--active"):
+			Config.optActive = True
 		elif(arg == "-l" or arg == "--list"):
 			Config.optList = True
 		else:

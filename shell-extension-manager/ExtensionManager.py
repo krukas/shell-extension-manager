@@ -1,9 +1,10 @@
-from os import getenv
-from os.path import isfile
-from xml.dom import minidom
-from Config import Config
-from Utils import *
+from os 		import getenv
+from os.path 	import isfile
+from xml.dom 	import minidom
+from Config 	import Config
+from Utils 		import *
 from ExtensionInstaller import ExtensionInstaller
+from ExtensionShow 		import ExtensionShow
 
 class ExtensionManager:
 	
@@ -52,7 +53,7 @@ class ExtensionManager:
 		print "  -h --help\tThis help text"
 		print "  -q --quiet\tNo output except for errors"
 		print "  -y --yes\tAssume Yes to all queries and do not prompt"
-		print "  -a --all\tOnly show enabled extensions with show command"
+		print "  -a --active\tOnly show enabled extensions with show command"
 		print "  -l --list\tDetailed list of extensions with show command"
 
 	def install(self, args):
@@ -64,10 +65,16 @@ class ExtensionManager:
 		install.install(args, Config.optYes)
 
 	def remove(self, args):
-		print "remove"
+		if(Config.user == 'root'):
+			display("Remove extensions system wide")
+		else:
+			display("Remove extensions for user "+Config.user)
 
 	def update(self, args):
-		print "update"
+		if(Config.user == 'root'):
+			display("Update extensions system wide")
+		else:
+			display("Update extensions for user "+Config.user)
 
 	def enable(self, args):
 		print "enable"
