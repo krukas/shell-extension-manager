@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from ExtensionManager import ExtensionManager
+from ExtensionController import ExtensionController
 from Config import Config
 from sys import argv
 from sys import exit
@@ -11,20 +11,20 @@ COMMAND = ""
 ARGS = []
 
 # Create the ExtensionManager
-exManager = ExtensionManager()
+exController = ExtensionController()
 
 # Check if command is given
 if(len(argv) < 2):
-	exManager.print_help()
+	exController.print_help()
 	exit()
 
-commands = ['install', 'remove', 'update', 'show', 'search', 'create', 'enable', 'disable']
+commands = ['install', 'remove', 'update', 'update-index', 'show', 'search', 'create', 'enable', 'disable']
 
 # check if command is valid
 if(argv[1] in commands):
 	COMMAND = argv[1]
 else:
-	exManager.print_help()
+	exController.print_help()
 	exit()
 
 # check for arguments
@@ -32,7 +32,7 @@ if(len(argv) > 2 ):
 	for x in xrange(2,len(argv)):
 		arg = argv[x]
 		if(arg == "-h" or arg == "--help"):
-			exManager.print_help()
+			exController.print_help()
 			exit()
 		elif(arg == "-q" or arg == "--quiet"):
 			Config.optQuiet = True
@@ -48,29 +48,32 @@ if(len(argv) > 2 ):
 commands = ['install', 'remove', 'search', 'create', 'enable', 'disable']
 
 if(COMMAND in commands and len(ARGS) <= 0 ):
-	exManager.print_help()
+	exController.print_help()
 	exit()
 
 if(COMMAND == 'install'):
-	exManager.install(ARGS)
+	exController.install(ARGS)
 
 elif(COMMAND == 'remove'):
-	exManager.remove(ARGS)
+	exController.remove(ARGS)
 
 elif(COMMAND == 'update'):
-	exManager.update(ARGS)
+	exController.update(ARGS)
+
+elif(COMMAND == 'update-index'):
+	exController.updateIndex()
 
 elif(COMMAND == 'enable'):
-	exManager.enable(ARGS)
+	exController.enable(ARGS)
 
 elif(COMMAND == 'disable'):
-	exManager.disable(ARGS)
+	exController.disable(ARGS)
 
 elif(COMMAND == 'show'):
-	exManager.show(ARGS)
+	exController.show(ARGS)
 
 elif(COMMAND == 'create'):
-	exManager.create(ARGS)
+	exController.create(ARGS)
 
 
 

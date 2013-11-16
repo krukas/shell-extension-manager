@@ -4,6 +4,8 @@ class Config:
 	user			= ""
 	sudoUser		= ""
 	installDir		= ""
+	systemDir		= "/usr/share/gnome-shell/extensions/"
+	userDir			= ""
 	optQuiet		= False
 	optYes			= False
 	optActive		= False

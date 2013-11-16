@@ -1,9 +1,12 @@
 #
 #  Completion for shell-extension-manager:
 #
+# /etc/bash_completion.d/shell-extension-manager
+#
 #  shell-extension-manager install
 #  shell-extension-manager remove
 #  shell-extension-manager update
+#  shell-extension-manager update-index
 #  shell-extension-manager enable
 #  shell-extension-manager disable
 #  shell-extension-manager show
@@ -15,7 +18,7 @@ _shell-extension-manager()
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="install remove update enable disable show create"
+    opts="install remove update update-index enable disable show create"
 
     if [ "$COMP_CWORD" -gt "1" ] && [ "${COMP_WORDS[1]}" = "create" ]; then
         _filedir
