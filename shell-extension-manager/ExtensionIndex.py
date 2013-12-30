@@ -59,7 +59,7 @@ class ExtensionIndex:
 			extensions = self.getPage(page)
 			display("Getting page "+str(page)+" from "+str(self.numberOfPages) )
 			for ex in range(len(extensions)):
-				name = str(extensions[ex]['name']).replace(' ', '-').lower()
+				name = str(extensions[ex]['name'].encode('utf-8')).replace(' ', '-').lower()
 				exinfo = {}
 				
 				#get extension version
